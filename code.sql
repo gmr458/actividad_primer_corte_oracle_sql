@@ -16,7 +16,6 @@ DATAFILE 'indices_taller2.dbf'
 SIZE 20000K EXTENT MANAGEMENT
 LOCAL SEGMENT SPACE MANAGEMENT AUTO;
 
-
 -- create tables, execute with user taller2
 CREATE TABLE proveedores (
     id_proveedor NUMBER(10),
@@ -59,6 +58,7 @@ CREATE TABLE categorias (
     
     CONSTRAINT categorias_pk PRIMARY KEY (id_categoria) USING INDEX TABLESPACE ts_idx_taller2
 ) TABLESPACE ts_tab_taller2;
+
 CREATE TABLE clientes (
     id_cliente NUMBER(10),
     tipo_identificacion_cliente VARCHAR2(100),
@@ -137,7 +137,6 @@ CREATE TABLE detalle_facturas_ventas (
     tarifa_impuesto NUMBER(7, 4),
     valor_impuesto NUMBER(16, 2),
     estado_factura_venta VARCHAR2(10),
-    
     
     CONSTRAINT detalle_facturas_ventas_pk PRIMARY KEY (prefijo_factura_venta, id_factura_venta, id_detalle_factura_venta) USING INDEX TABLESPACE ts_idx_taller2,
     CONSTRAINT detalle_facturas_ventas_fk FOREIGN KEY (prefijo_factura_venta, id_factura_venta) REFERENCES facturas_ventas(prefijo_factura_venta, id_factura_venta),
