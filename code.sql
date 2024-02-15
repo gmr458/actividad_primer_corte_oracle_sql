@@ -143,3 +143,7 @@ CREATE TABLE detalle_facturas_ventas (
     CONSTRAINT detalle_facturas_ventas_fk FOREIGN KEY (prefijo_factura_venta, id_factura_venta) REFERENCES facturas_ventas(prefijo_factura_venta, id_factura_venta),
     CONSTRAINT detalle_facturas_ventas_productos_fk FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 ) TABLESPACE ts_tab_taller2;
+
+ALTER TABLE facturas_ventas ADD observaciones VARCHAR2(2000);
+ALTER TABLE detalle_facturas_ventas MODIFY (tarifa_impuesto NUMBER(6, 2));
+ALTER TABLE agencias DROP COLUMN tipo_formato_agencia;
